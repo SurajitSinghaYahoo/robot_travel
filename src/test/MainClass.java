@@ -1,9 +1,12 @@
-package robot;
+package test;
 
 import java.util.Scanner;
 
+import robot.RobotTravelHelper;
+
 public class MainClass {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in); 
 		System.out.print("Enter Size Of Rectangular as row and column format- "); 
