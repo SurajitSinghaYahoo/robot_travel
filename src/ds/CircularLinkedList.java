@@ -1,31 +1,16 @@
-package robot;
+package ds;
 
-class CircularLinkedList{
-	
-	class Node{
-		private char data;
-		private Node next;  
-		private Node prev;
-		
-		public char getData() {
-			return data;
-		}
-		public Node getNext() {
-			return next;
-		}
-		public Node getPrev() {
-			return prev;
-		}
-	}
+public class CircularLinkedList{
 	Node head;
-	void printList(){
+	public void printList(){
 		Node node = head;
-        while (node != null){
+		int count =0;
+        while (count++ < 5){
             System.out.print(node.data + " ");
             node = node.next;
         }
     }
-	void addNode(char value) {  
+	public void addNode(char value) {  
         if (head == null) {  
             Node node = new Node();  
             node.data = value;  
@@ -41,7 +26,7 @@ class CircularLinkedList{
 	        last.next = node;  
         }
     }
-	Node getNodeByValue(char ch) {
+	public Node getNodeByValue(char ch) {
 		Node node = head;
 		
         while (node != null){
@@ -52,10 +37,10 @@ class CircularLinkedList{
         }
         return null;
 	}
-	Node getPreviousNode(Node node) {
+	public Node getPreviousNode(Node node) {
 		return node.prev;
 	}
-	Node getNextNode(Node node) {
+	public Node getNextNode(Node node) {
 		return node.next;
 	}
 	
