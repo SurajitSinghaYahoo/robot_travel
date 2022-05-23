@@ -20,5 +20,6 @@ public class RobotTravelHelper {
 				.build();
 		System.out.print(rt.getPosition().getX()+ " "+ rt.getPosition().getY()+ " ");
 		System.out.println(rt.getCurrentDirection());
+		System.out.println("Total left count is: " + rt.getLeftCount());
 	}
 }

@@ -1,4 +1,6 @@
 package robot;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import ds.Node;
@@ -7,8 +9,10 @@ public class Robot {
 	private Position curPos;
 	private Stack<Node> storeDirection;
 	private Plane plane;
+	private List<Character> dirComments;
 	private MoveFactory moveFactory;
 	Robot(int m, int n, int x, int y, char dir, String moves){
+		this.dirComments = new ArrayList<>();
 		moveFactory = new MoveFactory();
 		this.plane = new Plane.Builder().setM(m).setN(n).build();
 		storeDirection = new Stack<>();
@@ -27,8 +31,10 @@ public class Robot {
 		storeDirection.add(curNode);
 	}
 	private void move(char ch) {
+		System.out.println("Inside move(ch) : " + ch);
 		Object obj = moveFactory.getFactoryObject(ch, storeDirection);
 		if(obj instanceof Direction) {
+			dirComments.add(ch);
 			storeDirection.add(((Direction) obj).changeDirection(plane.getCll(), storeDirection.peek()));
 		}else if(obj instanceof Move) {
 			((Move) obj).move(curPos, 1, plane);
@@ -47,6 +53,26 @@ public class Robot {
 		for(int i=0;i<str.length();i++) {
 			move(str.charAt(i));
 		}
+	}
+	
+	public int getLeftCount() {
+		int res=0;
+		for(char ch:dirComments) {
+			if('L' == ch) {
+				res++;
+			}
+		}
+		return res;
+	}
+	
+	public int getRightCount() {
+		int res=0;
+		for(char ch:dirComments) {
+			if('R' == ch) {
+				res++;
+			}
+		}
+		return res;
 	}
 	
 	public static class Builder {
