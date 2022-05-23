@@ -31,7 +31,6 @@ public class Robot {
 		storeDirection.add(curNode);
 	}
 	private void move(char ch) {
-		System.out.println("Inside move(ch) : " + ch);
 		Object obj = moveFactory.getFactoryObject(ch, storeDirection);
 		if(obj instanceof Direction) {
 			dirComments.add(ch);
